@@ -32,13 +32,24 @@ namespace SwissTransport
         [JsonProperty("distance")]
         public double? Distance { get; set; }
 
-        public List<SwissTransport.Station> getPossibleStations(string station)
+        public List<Station> getPossibleStations(string station)
         {
-            List<SwissTransport.Station> possibleStations;
+            List<Station> possibleStations;
             ITransport transport = new Transport();
 
             possibleStations = transport.GetStations(station).StationList;
             return possibleStations;
+        }
+        public bool checkStation(string station)
+        {
+            List<Station> possibleStations = getPossibleStations(station);
+
+            // check if there are valid stations
+            if (possibleStations.Count == 0)
+            {
+                return false;
+            }
+            return true;
         }
     }
 

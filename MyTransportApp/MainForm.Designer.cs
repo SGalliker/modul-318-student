@@ -39,6 +39,8 @@
             this.clmnDepartureTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnArrivalTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDepartureBoard = new System.Windows.Forms.Button();
+            this.btnConnections = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,6 +51,7 @@
             this.txtStartStation.Name = "txtStartStation";
             this.txtStartStation.Size = new System.Drawing.Size(387, 30);
             this.txtStartStation.TabIndex = 0;
+            this.txtStartStation.TextChanged += new System.EventHandler(this.txtStartStation_TextChanged);
             // 
             // txtEndStation
             // 
@@ -57,6 +60,7 @@
             this.txtEndStation.Name = "txtEndStation";
             this.txtEndStation.Size = new System.Drawing.Size(387, 30);
             this.txtEndStation.TabIndex = 1;
+            this.txtEndStation.TextChanged += new System.EventHandler(this.txtStartStation_TextChanged);
             // 
             // lblStartStation
             // 
@@ -80,10 +84,11 @@
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(452, 130);
+            this.btnSearch.Enabled = false;
+            this.btnSearch.Location = new System.Drawing.Point(893, 57);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(102, 30);
-            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Size = new System.Drawing.Size(183, 30);
+            this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -103,7 +108,7 @@
             this.dgvSearchResults.Location = new System.Drawing.Point(12, 166);
             this.dgvSearchResults.Name = "dgvSearchResults";
             this.dgvSearchResults.RowHeadersWidth = 51;
-            this.dgvSearchResults.Size = new System.Drawing.Size(1199, 696);
+            this.dgvSearchResults.Size = new System.Drawing.Size(1199, 422);
             this.dgvSearchResults.TabIndex = 5;
             this.dgvSearchResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellContentClick);
             // 
@@ -142,12 +147,36 @@
             this.clmnPlatform.Name = "clmnPlatform";
             this.clmnPlatform.Width = 125;
             // 
+            // btnDepartureBoard
+            // 
+            this.btnDepartureBoard.Enabled = false;
+            this.btnDepartureBoard.Location = new System.Drawing.Point(12, 123);
+            this.btnDepartureBoard.Name = "btnDepartureBoard";
+            this.btnDepartureBoard.Size = new System.Drawing.Size(183, 37);
+            this.btnDepartureBoard.TabIndex = 3;
+            this.btnDepartureBoard.Text = "Departure board";
+            this.btnDepartureBoard.UseVisualStyleBackColor = true;
+            this.btnDepartureBoard.Click += new System.EventHandler(this.btnDepartureBoard_Click);
+            // 
+            // btnConnections
+            // 
+            this.btnConnections.Enabled = false;
+            this.btnConnections.Location = new System.Drawing.Point(216, 123);
+            this.btnConnections.Name = "btnConnections";
+            this.btnConnections.Size = new System.Drawing.Size(183, 37);
+            this.btnConnections.TabIndex = 4;
+            this.btnConnections.Text = "Connections";
+            this.btnConnections.UseVisualStyleBackColor = true;
+            this.btnConnections.Click += new System.EventHandler(this.btnConnections_Click);
+            // 
             // MainForm
             // 
-            this.AcceptButton = this.btnSearch;
+            this.AcceptButton = this.btnConnections;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 874);
+            this.ClientSize = new System.Drawing.Size(1220, 600);
+            this.Controls.Add(this.btnConnections);
+            this.Controls.Add(this.btnDepartureBoard);
             this.Controls.Add(this.dgvSearchResults);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.lblEndStation);
@@ -175,6 +204,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnDepartureTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnArrivalTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnPlatform;
+        private System.Windows.Forms.Button btnDepartureBoard;
+        private System.Windows.Forms.Button btnConnections;
     }
 }
 

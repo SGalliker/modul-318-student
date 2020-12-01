@@ -47,8 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Departure.cs" />
-    <Compile Include="DepartureBoard.cs" />
-    <Compile Include="Connection.cs" />
+    <Compile Include="Board.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

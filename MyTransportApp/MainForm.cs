@@ -104,7 +104,6 @@ namespace MyTransportApp
             {
                 printNoStationsFound();
             }
-
         }
         // formats the date for the query
         private string[] formatDate(DateTime date, DateTime time)
@@ -138,7 +137,6 @@ namespace MyTransportApp
                     }
                 }
             }
-
         }
 
         private void txtStartStation_TextChanged(object sender, EventArgs e)

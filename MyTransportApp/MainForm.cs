@@ -23,22 +23,27 @@ namespace MyTransportApp
             InitializeComponent();
             dtpDate.MinDate = DateTime.Today;
         }
-
+        // searches for stations with similar name and puts them on the board
         private void btnSearch_Click(object sender, EventArgs e)
         {
             clearBoard();
             if (station.checkStations(txtStartStation.Text))
             {
-                startStations = station.getPossibleStations(txtStartStation.Text);
                 endStations = station.getPossibleStations(txtEndStation.Text);
+                startStations = station.getPossibleStations(txtStartStation.Text);
                 int i = 0;
                 foreach (Station startStation in startStations)
                 {
-                    if (isValidStation(startStation))
+                    if (isValidStation(startStation) && !String.IsNullOrWhiteSpace(txtEndStation.Text))
                     {
                         dgvSearchResults.Rows.Add(startStation.Name, endStations.ElementAt(i).Name);
                         i++;
-                    }           
+                    }
+                    else
+                    {
+                        dgvSearchResults.Rows.Add(startStation.Name);
+                        i++;
+                    }
                 }
             }
             else
@@ -46,7 +51,7 @@ namespace MyTransportApp
                 printNoStationsFound();
             }
         }
-
+        // looks for departures and puts them on the board
         private void searchForDepartures()
         {
             clearBoard();
@@ -77,7 +82,7 @@ namespace MyTransportApp
                 printNoStationsFound();
             }
         }
-
+        // looks for connections and puts them on the board
         private void searchForConnections()
         {
             List<Connection> connections;
@@ -155,20 +160,24 @@ namespace MyTransportApp
         {
             searchForConnections();
         }
+        // clear the board
         private void clearBoard()
         {
             dgvSearchResults.Rows.Clear();
         }
+        // checks if station has an ID
         private bool isValidStation(Station station)
         {
             return station.Id != null;
         }
+        // print if no stations were found
         private void printNoStationsFound()
         {
             MessageBox.Show("Zu den gesuchten Stationen konnten keine Daten gefunden werden!");
             txtStartStation.Clear();
             txtEndStation.Clear();
         }
+        // print if no connections were found
         private void printNoConnectionsFound()
         {
             MessageBox.Show("Zu dem gewünschten Zeitpunkt wurden keine Verbindungen gefunden!");

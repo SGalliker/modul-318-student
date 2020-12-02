@@ -224,7 +224,7 @@
             this.Controls.Add(this.txtEndStation);
             this.Controls.Add(this.txtStartStation);
             this.Name = "MainForm";
-            this.Text = "MyTransport";
+            this.Text = "MyTransportApp v1.0";
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

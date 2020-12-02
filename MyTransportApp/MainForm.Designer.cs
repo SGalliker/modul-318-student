@@ -41,6 +41,9 @@
             this.clmnPlatform = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDepartureBoard = new System.Windows.Forms.Button();
             this.btnConnections = new System.Windows.Forms.Button();
+            this.dtpTime = new System.Windows.Forms.DateTimePicker();
+            this.lblDateTime = new System.Windows.Forms.Label();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSearchResults)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +88,11 @@
             // btnSearch
             // 
             this.btnSearch.Enabled = false;
-            this.btnSearch.Location = new System.Drawing.Point(893, 57);
+            this.btnSearch.Location = new System.Drawing.Point(882, 50);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(183, 30);
+            this.btnSearch.Size = new System.Drawing.Size(183, 37);
             this.btnSearch.TabIndex = 2;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "Station suchen";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -109,8 +112,10 @@
             this.dgvSearchResults.Name = "dgvSearchResults";
             this.dgvSearchResults.RowHeadersWidth = 51;
             this.dgvSearchResults.Size = new System.Drawing.Size(1199, 422);
-            this.dgvSearchResults.TabIndex = 5;
+            this.dgvSearchResults.TabIndex = 7;
+            this.dgvSearchResults.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellContentClick);
             this.dgvSearchResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellContentClick);
+            this.dgvSearchResults.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSearchResults_CellContentClick);
             // 
             // clmnStationName
             // 
@@ -129,20 +134,20 @@
             // clmnDepartureTime
             // 
             this.clmnDepartureTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmnDepartureTime.HeaderText = "Departure";
+            this.clmnDepartureTime.HeaderText = "Abfahrt";
             this.clmnDepartureTime.MinimumWidth = 6;
             this.clmnDepartureTime.Name = "clmnDepartureTime";
             // 
             // clmnArrivalTime
             // 
             this.clmnArrivalTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.clmnArrivalTime.HeaderText = "Arrival";
+            this.clmnArrivalTime.HeaderText = "Ankunft";
             this.clmnArrivalTime.MinimumWidth = 6;
             this.clmnArrivalTime.Name = "clmnArrivalTime";
             // 
             // clmnPlatform
             // 
-            this.clmnPlatform.HeaderText = "Platform";
+            this.clmnPlatform.HeaderText = "Gleis";
             this.clmnPlatform.MinimumWidth = 6;
             this.clmnPlatform.Name = "clmnPlatform";
             this.clmnPlatform.Width = 125;
@@ -154,7 +159,7 @@
             this.btnDepartureBoard.Name = "btnDepartureBoard";
             this.btnDepartureBoard.Size = new System.Drawing.Size(183, 37);
             this.btnDepartureBoard.TabIndex = 3;
-            this.btnDepartureBoard.Text = "Departure board";
+            this.btnDepartureBoard.Text = "Abfahrtstafel";
             this.btnDepartureBoard.UseVisualStyleBackColor = true;
             this.btnDepartureBoard.Click += new System.EventHandler(this.btnDepartureBoard_Click);
             // 
@@ -165,9 +170,41 @@
             this.btnConnections.Name = "btnConnections";
             this.btnConnections.Size = new System.Drawing.Size(183, 37);
             this.btnConnections.TabIndex = 4;
-            this.btnConnections.Text = "Connections";
+            this.btnConnections.Text = "Verbindungen";
             this.btnConnections.UseVisualStyleBackColor = true;
             this.btnConnections.Click += new System.EventHandler(this.btnConnections_Click);
+            // 
+            // dtpTime
+            // 
+            this.dtpTime.CustomFormat = "HH:mm";
+            this.dtpTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTime.Location = new System.Drawing.Point(755, 128);
+            this.dtpTime.Name = "dtpTime";
+            this.dtpTime.ShowUpDown = true;
+            this.dtpTime.Size = new System.Drawing.Size(84, 30);
+            this.dtpTime.TabIndex = 6;
+            // 
+            // lblDateTime
+            // 
+            this.lblDateTime.AutoSize = true;
+            this.lblDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDateTime.Location = new System.Drawing.Point(448, 100);
+            this.lblDateTime.Name = "lblDateTime";
+            this.lblDateTime.Size = new System.Drawing.Size(118, 20);
+            this.lblDateTime.TabIndex = 7;
+            this.lblDateTime.Text = "Datum/Uhrzeit";
+            // 
+            // dtpDate
+            // 
+            this.dtpDate.CustomFormat = "dddd, dd.MM";
+            this.dtpDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpDate.Location = new System.Drawing.Point(452, 128);
+            this.dtpDate.MinDate = new System.DateTime(2020, 12, 2, 0, 0, 0, 0);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(263, 30);
+            this.dtpDate.TabIndex = 5;
             // 
             // MainForm
             // 
@@ -175,6 +212,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1220, 600);
+            this.Controls.Add(this.dtpDate);
+            this.Controls.Add(this.lblDateTime);
+            this.Controls.Add(this.dtpTime);
             this.Controls.Add(this.btnConnections);
             this.Controls.Add(this.btnDepartureBoard);
             this.Controls.Add(this.dgvSearchResults);
@@ -199,13 +239,16 @@
         private System.Windows.Forms.Label lblEndStation;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridView dgvSearchResults;
+        private System.Windows.Forms.Button btnDepartureBoard;
+        private System.Windows.Forms.Button btnConnections;
+        private System.Windows.Forms.DateTimePicker dtpTime;
+        private System.Windows.Forms.Label lblDateTime;
+        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnStationName;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnEndStation;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnDepartureTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnArrivalTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmnPlatform;
-        private System.Windows.Forms.Button btnDepartureBoard;
-        private System.Windows.Forms.Button btnConnections;
     }
 }
 

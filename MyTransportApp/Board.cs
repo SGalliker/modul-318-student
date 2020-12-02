@@ -22,11 +22,6 @@ namespace MyTransportApp
             }
             return departures;
         }
-        public static List<Connection> getConnectionBoard(Connection connection)
-        {
-            List<Connection> connections = new List<Connection>();
-            return connections;
-        }
         public static String[] getFormattedDepartureBoard(Departure departure, Station station)
         {
             return new[]

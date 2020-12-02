@@ -40,12 +40,10 @@ namespace SwissTransport
             possibleStations = transport.GetStations(station).StationList;
             return possibleStations;
         }
-        public bool checkStation(string station)
+        public bool checkStations(string station)
         {
             List<Station> possibleStations = getPossibleStations(station);
-
-            // check if there are valid stations
-            if (possibleStations.Count == 0)
+            if(possibleStations.Count == 0)
             {
                 return false;
             }
